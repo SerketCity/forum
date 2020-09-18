@@ -1,0 +1,52 @@
+doctype html
+html
+    head
+        title #{board.name}
+        link(rel="stylesheet" type="text/css" href="/css/style.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+        script(src="/socket.io/socket.io.js")
+        script(src="/javascripts/global.js")
+    body
+        center
+            span(id="userCountBlock")
+                img(src="/images/alarm.gif" width="20" class="alarm")
+                label(id="userCount")
+                img(src="/images/alarm.gif" width="20" class="alarm")
+            div(id="account")
+                label #{currUser} | 
+                a(href="/logout") Log Out
+            table(id="list")
+                if (posts)
+                    tr
+                        th
+                        th Title
+                        th User
+                        th Posted On
+                    each post, index in posts
+                        tr
+                            td(class="threadicon")
+                                img(src="/images/thread.gif" width="75")
+                            td
+                                a(href=board.name + '/thread/' + post.id) #{post.name}
+                            td(class="center")
+                                if (users[index] == "john")
+                                    img(src="/images/johnmin.gif" width="50")
+                                else
+                                    label #{users[index]}
+                            td(class="center")
+                                label #{post.createdAt.getMonth() + 1}/#{post.createdAt.getDate()}/#{post.createdAt.getFullYear()} | #{post.createdAt.getHours()}:#{post.createdAt.getMinutes()}:#{post.createdAt.getSeconds()}
+                else
+                    p No posts here yet! Make one!
+            br
+            form(method='POST' action='/' + board.name + '/new' id="thread")
+                label Title:
+                    br
+                    input(type='text' name='name' minlength="5" maxlength="30" class="threadBox" required)
+                br
+                label Content:
+                    br
+                    input(type='text' name='content' minlength="1" maxlength="1000" class="threadBox" required)
+                br
+                br
+                button(type='submit' id="threadSubmit") Submit
+            a(href="/") Back To Home Page

@@ -1,0 +1,39 @@
+doctype html
+html
+    head
+        title wow its a forum
+        link(rel="stylesheet" type="text/css" href="/css/style.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+        script(src="/socket.io/socket.io.js")
+        script(src="/javascripts/global.js")
+    body
+        center
+            img(src="/images/home.gif" width="100%")
+            if (currUser != "")
+                div(id="account")
+                    label #{currUser} | 
+                    a(href="/logout") Log Out
+            else
+                div(id="account")
+                    a(href="/login") Log In 
+                    label |
+                    a(href="/register") Register
+            table(id="list")
+                tr
+                    th
+                    th Board
+                    th Threads
+                    th Posts
+                each board, index in boards
+                    tr
+                        td(class="boardicon")
+                            img(src="/images/board.gif")
+                        td
+                            a(href='/' + board.name) #{board.name}
+                            p #{board.description}
+                        td(class="center") #{threadCounts[index]}
+                        td(class="center") #{postCounts[index]}
+            span
+                img(src="/images/alarm.gif" width="20" class="alarm")
+                label(id="userCount")
+                img(src="/images/alarm.gif" width="20" class="alarm")

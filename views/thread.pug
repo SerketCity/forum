@@ -1,0 +1,54 @@
+doctype html
+html
+    head
+        title #{board.name} | #{originalPost.name}
+        link(rel="stylesheet" type="text/css" href="/css/style.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+        script(src="/socket.io/socket.io.js")
+        script(src="/javascripts/global.js")
+    body
+        center
+            span(id="userCountBlock")
+                img(src="/images/alarm.gif" width="20" class="alarm")
+                label(id="userCount")
+                img(src="/images/alarm.gif" width="20" class="alarm")
+            div(id="account")
+                label #{currUser} | 
+                a(href="/logout") Log Out
+            h2
+                label #{originalPost.name}
+            table(id="thread")
+                tr
+                    td(class="center")
+                        if (users[0] == "john" )
+                            img(src="/images/john.jpg" width="100")
+                            br
+                            img(src="/images/johnmin.gif" width="50")
+                        else
+                            img(src="/images/username.png" width="100")
+                            br
+                            label #{users[0]}
+                        br
+                        label #{originalPost.createdAt.getMonth() + 1}/#{originalPost.createdAt.getDate()}/#{originalPost.createdAt.getFullYear()} | #{originalPost.createdAt.getHours()}:#{originalPost.createdAt.getMinutes()}:#{originalPost.createdAt.getSeconds()}
+                    td #{originalPost.content}
+                if (comments)
+                    each comment, index in comments
+                        tr
+                            td(class="center")
+                                if (users[index + 1] == "john")
+                                    img(src="/images/john.jpg" width="100")
+                                    br
+                                    img(src="/images/johnmin.gif" width="50")
+                                else
+                                    img(src="/images/username.png" width="100")
+                                    br
+                                    label #{users[index + 1]}
+                                br
+                                label #{comment.createdAt.getMonth() + 1}/#{comment.createdAt.getDate()}/#{comment.createdAt.getFullYear()} | #{comment.createdAt.getHours()}:#{comment.createdAt.getMinutes()}:#{comment.createdAt.getSeconds()}
+                            td #{comment.content}
+            form(method='POST' action='/' + board.name + '/thread/' + originalPost.id + '/new' id="comment")
+                label Comment:
+                    br
+                    input(type='text' name='content' minlength="1" maxlength="1000" id="commentBox" required)
+                button(type='submit') Submit
+            a(href="/" + board.name) Back To Thread List

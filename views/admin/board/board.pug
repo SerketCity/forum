@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title #{board.name}
+    link(rel="stylesheet" type="text/css" href="/assets/css/style.css")
+  body
+    h1 Board Detailed View
+    ul
+      li Name: #{board.name}
+      li Description: #{board.description}
+
+    form(action="/admin/board/delete" method="POST")
+      input(type="hidden" name="id" value=board.id)
+      button(type="submit") Delete
+
+    a(href='/admin/board/edit/' + board.id) Edit Board
+    br
+    a(href='/admin/board') Back To Board List

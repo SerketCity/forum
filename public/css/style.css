@@ -1,0 +1,88 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+a {
+    color: red;
+}
+
+#account {
+    position: absolute;
+    right: 2%;
+}
+
+#userCountBlock {
+    position: absolute;
+    left: 2%;
+}
+
+#list {
+    width: 50%;
+}
+
+td {
+    border-style: inset;
+    border-color: red;
+}
+
+table {
+    margin: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+.alarm {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
+.boardicon {
+    width: 103px;
+}
+
+.threadicon {
+    width: 75px;
+}
+
+#thread {
+    width: 75%;
+}
+
+#comment {
+    width: 50%;
+    border-style: double;
+    border-color: red;
+    padding: 5px;
+}
+
+#commentBox {
+    width: 80%;
+}
+
+#thread {
+    width: 45%;
+    border-style: double;
+    border-color: red;
+    padding: 5px;
+}
+
+.threadBox {
+    width: 80%;
+}
+
+#threadSubmit {
+    width: 50%;
+}
+
+#logreg {
+    width: 30%;
+    border-style: double;
+    border-color: red;
+    padding: 5px;
+}

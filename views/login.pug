@@ -1,0 +1,21 @@
+html
+    head
+        title Log In
+        link(rel="stylesheet" type="text/css" href="/css/style.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+        script(src="/javascripts/login.js")
+    body
+        center
+            img(src="/images/login.gif")
+            p(id="reply")
+            form(action="/register" method="POST" id="logreg")
+                label Username (4-20 Characters): 
+                    input(type="text" name="username" id="username" minlength="4" maxlength="20" required)
+                br
+                br
+                label Password (8-30 Characters):  
+                    input(type="password" name="password" id="password" minlength="8" maxlength="30" requried)
+                br
+                br
+                button(id="submit") Submit
+            a(href="/") Back To Home

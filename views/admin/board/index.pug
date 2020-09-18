@@ -1,0 +1,6 @@
+ul
+  each board in boards
+    li 
+      a(href='/admin/board/' + board.id) #{board.name}
+      
+a(href='/admin/board/new') Add New Board
